@@ -1,3 +1,4 @@
+// declare pins to blink leds
 int led1=13,led2=12,led3=11,led4=10,led5=9;
 
 //array of leds
@@ -17,7 +18,7 @@ void loop() {
   blink_leds();
 }
 void blink_leds(){
-// loop over the leds in the array and perform writing the high and low
+// loop over the pins in the array and perform writing the high and low
   for (int i=0;i<sizeof(leds);i++){
     digitalWrite(leds[i],HIGH);
     delay(70);
