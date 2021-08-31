@@ -1,0 +1,37 @@
+# These settings apply to how the script will operate.
+copter_settings:
+
+  #  angle to run the motor at
+  RUN_ANGLE: 35
+
+  #  mode to run the motor in clockwise  or counterclockwise
+  run_mode:
+    #  clockwise
+    CW: True
+  # settings the script will use while running
+  run_settings:
+    # angle range to fly the motor between assuming it don't overturn
+    IN_ANGLE_MIN: 0.00
+    IN_ANGLE_MAX: 90.00
+    # initial value of the potentiometer at the point we consider the motor to be at zero degrees
+    IN_ANALOG_READ_VAL_MIN: .26
+     #  final value of the potentiometer at the point we consider the motor to be at ninety degrees
+    IN_ANALOG_READ_VAL_MAX: .6119
+
+    # this is the output to be fed to the motor driver to adjust the speed to achieve a certain angle of rotation
+    #
+    PWM_OUT_MIN: .2
+    PWM_OUT_MAX: .7
+
+    # pin to connect our analog read from potentiometer to
+    A_READ_PIN: 0
+    # pin to use to control the motor speed
+    PWM_OUT_PIN: 11
+
+    # motor direction switch
+    RUN_MODE_PIN: 8
+
+    # port arduino is connected to
+    PORT: com11
+
+
