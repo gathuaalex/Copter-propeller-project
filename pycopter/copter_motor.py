@@ -127,6 +127,7 @@ if __name__ == '__main__':
         # reading analog value from the potentiometer to detect the angle
         ANALOG_READ_VAL = board.analog[A_READ_PIN].read()
         print(ANALOG_READ_VAL, ' value of analog read')
+
         # # board.send_sysex(STRING_DATA, util.str_to_two_byte_iter(f'{ANALOG_READ_VAL}'))
         # if a_value := ANALOG_READ_VAL:
         #     # if a_value < ANALOG_READ_MIN:
@@ -138,6 +139,8 @@ if __name__ == '__main__':
         #
         # # if the motor is to rotate in counterclockwise
         # print('clockwise ', RUN_MODE)
+
+        # set the motor to do clockwise rotation
         if not RUN_MODE_SET:
             board.digital[RUN_PIN].write(int(RUN_MODE))
             RUN_MODE_SET = True
@@ -163,7 +166,7 @@ if __name__ == '__main__':
             )
         )
         print('*' * 50)
-        print(angle, ' degrees')
+        print(angle, ' degrees')''
         print('*' * 50)
         # """
         # Handling feedback when the motor has not achieved the required angle,
@@ -185,13 +188,18 @@ if __name__ == '__main__':
                         new = set_pwm(**SET_PWM_ARGS)
                         print(new, 'error when diff gt 0')
                         PWM_SIGNAL += new
-                    SET_PWM_ARGS.update(run_angle=RUN_ANGLE)
-                    # NEW_PWM_SIGNAL = True
+
+                    # TODO: make sure you check the effect of this line
+                    #SET_PWM_ARGS.update(run_angle=RUN_ANGLE)
+
+                    NEW_PWM_SIGNAL = True
+
                     print(SET_PWM_ARGS)
                     print(PWM_SIGNAL, " corrected")
-                    # send a new signal with a feedback included
-                    # if not abs(PWM_SIGNAL) > 1:
-                    # PWM.write(abs(PWM_SIGNAL))
 
-                    #     #  sleep to allow the motor to achieve the angle
-                    #     sleep(3.0)
+                    # send a new signal with a feedback included
+                    if not abs(PWM_SIGNAL) > 1:
+                    PWM.write(abs(PWM_SIGNAL))
+
+                        #  sleep to allow the motor to achieve the angle
+                        sleep(3.0)

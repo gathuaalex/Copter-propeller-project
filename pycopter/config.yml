@@ -8,13 +8,17 @@ copter_settings:
   run_mode:
     #  clockwise
     CW: True
+    
   # settings the script will use while running
   run_settings:
+
     # angle range to fly the motor between assuming it don't overturn
     IN_ANGLE_MIN: 0.00
     IN_ANGLE_MAX: 90.00
+
     # initial value of the potentiometer at the point we consider the motor to be at zero degrees
     IN_ANALOG_READ_VAL_MIN: .26
+
      #  final value of the potentiometer at the point we consider the motor to be at ninety degrees
     IN_ANALOG_READ_VAL_MAX: .6119
 
@@ -23,12 +27,15 @@ copter_settings:
     PWM_OUT_MIN: .2
     PWM_OUT_MAX: .7
 
-    # pin to connect our analog read from potentiometer to
+    # pin to connect our analog read from potentiometer middle terminal
     A_READ_PIN: 0
+
     # pin to use to control the motor speed
+    # connect to vr of the motor driver
     PWM_OUT_PIN: 11
 
     # motor direction switch
+    # connect to zf of motor driver
     RUN_MODE_PIN: 8
 
     # port arduino is connected to
